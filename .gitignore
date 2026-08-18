@@ -1,5 +1,15 @@
 # Prerequisites
 *.d
+# visual Studio
+.vs/ 
+*.user
+*.suo
+
+# Visual Studio build output
+x64/
+x86/
+Debug/
+Release/
 
 # Compiled Object files
 *.slo
