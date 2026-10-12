@@ -15,3 +15,13 @@ int Player::getAttackPower() const
 {
     return attackPower;
 }
+
+void Player::takeDamage(int damage)
+{
+    health -= damage;
+
+    if (health < 0)
+    {
+        health = 0;
+    }
+}

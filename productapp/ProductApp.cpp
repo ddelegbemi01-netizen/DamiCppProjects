@@ -23,5 +23,21 @@ int main()
         << player.getAttackPower()
         << '\n';
 
+    std::cout << "Starting health: "
+        << player.getHealth()
+        << '\n';
+
+    player.takeDamage(25);
+
+    std::cout << "Health after taking 25 damage: "
+        << player.getHealth()
+        << '\n';
+
+    player.takeDamage(150);
+
+    std::cout << "Health after taking 150 damage: "
+        << player.getHealth()
+        << '\n';
+
     return 0;
 }
