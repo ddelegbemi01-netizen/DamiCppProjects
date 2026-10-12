@@ -39,5 +39,13 @@ int main()
         << player.getHealth()
         << '\n';
 
+    Player testPlayer;
+
+    testPlayer.takeDamage(-20);
+
+    std::cout << "Health after negative damage: "
+        << testPlayer.getHealth()
+        << '\n';
+
     return 0;
 }

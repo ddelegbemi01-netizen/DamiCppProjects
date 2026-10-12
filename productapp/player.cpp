@@ -17,11 +17,17 @@ int Player::getAttackPower() const
 }
 
 void Player::takeDamage(int damage)
+
 {
+    if (damage < 0)
+    {
+        return;
+    }
+
     health -= damage;
 
     if (health < 0)
     {
         health = 0;
     }
-}
+} 
