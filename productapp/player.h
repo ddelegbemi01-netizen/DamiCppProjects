@@ -5,7 +5,6 @@ class Player
 private:
 	int health;
 	int attackPower;
-	//int damage;
 
 public:
 	Player();

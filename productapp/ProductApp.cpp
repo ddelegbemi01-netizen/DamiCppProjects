@@ -4,6 +4,7 @@
 #include "Game.h"
 #include "player.h"
 #include <iostream>
+#include "Enemy.h"
 
 
 int main()
@@ -13,6 +14,8 @@ int main()
     
 
     Player player;
+    Player combatPlayer;
+
 
     std::cout << "PlayerHealth:"
       
@@ -47,5 +50,27 @@ int main()
         << testPlayer.getHealth()
         << '\n';
 
+    Enemy goblin;
+    std::cout << "\nGoblin Health:"
+        << goblin.getHealth()
+        << '\n';
+
+    std::cout << "Goblin Attack:"
+        << goblin.getAttackPower()
+        << '\n';
+
+    std::cout << "The player attacks the Goblin!\n";
+    goblin.takeDamage(combatPlayer.getAttackPower());
+
+    std::cout << " Goblins health after attack:"
+    << goblin.getHealth()
+    << '\n';
+
+    std::cout << "The Goblin attacks the player! \n";
+    combatPlayer.takeDamage(goblin.getAttackPower());
+
+    std::cout << "Players Health after attack: "
+        << combatPlayer.getHealth()
+        << '\n';
     return 0;
 }
