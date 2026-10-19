@@ -7,7 +7,17 @@
 #include "Enemy.h"
 
 
+
+void displayMenu()
+{
+    std::cout << "\n=== C++ DUNGEON ===\n";
+    std::cout << "1. Attack\n";
+    std::cout << "2. Check stats\n";
+    std::cout << "3. Run away\n";
+    std::cout << "Choose an action: ";
+}
 int main()
+
 {
     Game game;
     game.run();
@@ -75,49 +85,76 @@ int main()
 
     int choice;
 
-    std::cout << "\n=== C++ DUNGEON ===\n";
-    std::cout << "1. Attack\n";
-    std::cout << "2. Check stats\n";
-    std::cout << "3. Run away\n";
-    std::cout << "Choose an action:";
-
-    std::cin >> choice;
-
-    if (choice == 1)
+    
+    while (true)
     {
-        std::cout << "\nYou attack the Goblin!\n";
-
-        goblin.takeDamage(combatPlayer.getAttackPower());
-
-        std::cout << "Goblin health: "
-            << goblin.getHealth()
-            << '\n';
 
 
-        if (goblin.getHealth() > 0)
+        std::cout << "\n--C++ DUNGEON--\n";
+        std::cout << "1. Attack\n";
+        std::cout << "2. Check stats\n";
+        std::cout << "3. Run away\n";
+        std::cout << "Choose an action:";
+
+        std::cin >> choice;
+
+        if (choice == 1)
         {
-            std::cout << "The Goblin attacks you\n";
-            combatPlayer.takeDamage(goblin.getAttackPower());
-            std::cout << "Your Health:"
+            std::cout << "\nYou attack the Goblin!\n";
+
+            goblin.takeDamage(combatPlayer.getAttackPower());
+
+            std::cout << "Goblin health: "
+                << goblin.getHealth()
+                << '\n';
+
+
+            if (goblin.getHealth() > 0)
+            {
+                std::cout << "The Goblin attacks you!\n";
+
+                combatPlayer.takeDamage(goblin.getAttackPower());
+
+                std::cout << "Your Health: "
+                    << combatPlayer.getHealth()
+                    << '\n';
+
+                if (combatPlayer.getHealth() <= 0)
+                {
+                    std::cout << "You have been defeated!\n";
+                    std::cout << "GAME OVER\n";
+                    break;
+                }
+            }
+            else
+            {
+                std::cout << "You defeated the Goblin!\n";
+                std::cout << "Victory!\n";
+                break;
+            }
+        }
+        else if (choice == 2)
+        {
+            std::cout << "--Player Stats--\n";
+            std::cout << "Health:"
                 << combatPlayer.getHealth()
                 << '\n';
+
+            std::cout << "Attack Power:"
+                << combatPlayer.getAttackPower()
+                << '\n';
+        }
+       
+
+        else if (choice == 3)
+        {
+            std::cout << "You ran away from the Goblin\n";
+            break;
         }
         else
         {
-            std::cout << "You defeated the Gonlin!\n";
+            std::cout << "invalid choice!\n";
         }
-    }
-    else if (choice == 2)
-    {
-        std::cout << "You chose to check your stats!\n";
-    }
-    else if (choice == 3)
-    {
-        std::cout << "you chose to run away\n";
-    }
-    else
-    {
-        std::cout << "invalid choice!\n";
     }
 
     return 0;
