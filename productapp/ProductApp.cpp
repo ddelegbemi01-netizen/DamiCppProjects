@@ -16,6 +16,18 @@ void displayMenu()
     std::cout << "3. Run away\n";
     std::cout << "Choose an action: ";
 }
+void displayPlayerStats(const Player& combatPlayer)
+{
+    std::cout << "\n --- Player Stats --\n";
+    std::cout << "Health:"
+        << combatPlayer.getHealth()
+        << '\n';
+
+    std::cout << "Attack Power:"
+        << combatPlayer.getAttackPower()
+        << '\n';
+
+}
 
 bool fightGoblin(Player& combatPlayer, Enemy& goblin)
 {
@@ -133,14 +145,7 @@ int main()
         }
         else if (choice == 2)
         {
-            std::cout << "--Player Stats--\n";
-            std::cout << "Health:"
-                << combatPlayer.getHealth()
-                << '\n';
-
-            std::cout << "Attack Power:"
-                << combatPlayer.getAttackPower()
-                << '\n';
+            displayPlayerStats(combatPlayer);
         }
        
 
