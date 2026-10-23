@@ -16,6 +16,38 @@ void displayMenu()
     std::cout << "3. Run away\n";
     std::cout << "Choose an action: ";
 }
+
+bool fightGoblin(Player& combatPlayer, Enemy& goblin)
+{
+    std::cout << "you attack the Goblin\n";
+    goblin.takeDamage(combatPlayer.getAttackPower());
+    std::cout << "Goblin Health:"
+        << goblin.getHealth()
+        << '\n';
+    if (goblin.getHealth() > 0)
+    {
+        std::cout << "The Goblin attacks you!\n";
+        combatPlayer.takeDamage(goblin.getAttackPower());
+
+        std::cout << "Your health: "
+            << combatPlayer.getHealth()
+            << '\n';
+
+        if (combatPlayer.getHealth() <= 0)
+        {
+            std::cout << "You have been defeated!\n";
+            std::cout << "GAME OVER\n";
+        }
+    }
+    else
+    {
+        std::cout << "You defeated the Goblin!\n";
+        std::cout << "VICTORY!\n";
+        return false;
+
+    }
+    return combatPlayer.getHealth() > 0;
+}
 int main()
 
 {
@@ -89,47 +121,13 @@ int main()
     while (true)
     {
 
-
-        std::cout << "\n--C++ DUNGEON--\n";
-        std::cout << "1. Attack\n";
-        std::cout << "2. Check stats\n";
-        std::cout << "3. Run away\n";
-        std::cout << "Choose an action:";
-
+        displayMenu();
         std::cin >> choice;
 
         if (choice == 1)
         {
-            std::cout << "\nYou attack the Goblin!\n";
-
-            goblin.takeDamage(combatPlayer.getAttackPower());
-
-            std::cout << "Goblin health: "
-                << goblin.getHealth()
-                << '\n';
-
-
-            if (goblin.getHealth() > 0)
+            if (!fightGoblin(combatPlayer, goblin))
             {
-                std::cout << "The Goblin attacks you!\n";
-
-                combatPlayer.takeDamage(goblin.getAttackPower());
-
-                std::cout << "Your Health: "
-                    << combatPlayer.getHealth()
-                    << '\n';
-
-                if (combatPlayer.getHealth() <= 0)
-                {
-                    std::cout << "You have been defeated!\n";
-                    std::cout << "GAME OVER\n";
-                    break;
-                }
-            }
-            else
-            {
-                std::cout << "You defeated the Goblin!\n";
-                std::cout << "Victory!\n";
                 break;
             }
         }
